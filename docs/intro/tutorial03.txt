@@ -104,13 +104,14 @@ method and display whatever ID you provide in the URL. Try
 placeholder results and voting pages.
 
 When somebody requests a page from your website -- say, "/polls/34/", Django
-will load the ``mysite.urls`` Python module because it's pointed to by the
-:setting:`ROOT_URLCONF` setting. It finds the variable named ``urlpatterns``
-and traverses the regular expressions in order. After finding the match at
-``'^polls/'``, it strips off the matching text (``"polls/"``) and sends the
-remaining text -- ``"34/"`` -- to the 'polls.urls' URLconf for further
-processing. There it matches ``r'^(?P<question_id>[0-9]+)/$'``, resulting in a
-call to the ``detail()`` view like so::
+will load the ``mysite.urls`` (located in mysite/urls.py) Python module because
+it's pointed to by the :setting:`ROOT_URLCONF` setting. It finds the variable
+named ``urlpatterns`` and traverses the regular expressions in order. After
+finding the match at ``'^polls/'``, it strips off the matching text
+(``"polls/"``) and sends the remaining text -- ``"34/"`` -- to the 'polls.urls'
+(located in polls/urls.py) URLconf for further processing. There it matches
+``r'^(?P<question_id>[0-9]+)/$'``, resulting in a call to the ``detail()``
+view like so::
 
     detail(request=<HttpRequest object>, question_id='34')
 
